@@ -23,7 +23,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 
 class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickListener {
@@ -52,10 +51,12 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
             .getCountyCode()
 
         retrofit.enqueue(object : Callback<Data> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<Data>, response: Response<Data>) {
                 if (response.isSuccessful) {
                     recyclerView.apply {
                         layoutManager = LinearLayoutManager(context)
+                        adapter?.notifyDataSetChanged()
                         recyclerView.adapter =
                             AdapterSelectExperties(
                                 response.body()?.data?.expertise!!,
@@ -83,8 +84,8 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
 
     }
 
-    override fun onCLick(position: Int, experties: String) {
-        goToPreviousScreen(experties)
+    override fun onCLick(position: Int, expertise: String) {
+        goToPreviousScreen(expertise)
         findNavController().navigateUp()
 
 

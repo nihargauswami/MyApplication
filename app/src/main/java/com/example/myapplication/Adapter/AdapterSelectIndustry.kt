@@ -1,5 +1,6 @@
 package com.example.myapplication.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,12 +32,14 @@ class AdapterSelectIndustry(
         return IndustryViewHolder(itemView)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: AdapterSelectIndustry.IndustryViewHolder, position: Int) {
         val itemView = industryList[position]
         holder.industry.text = itemView.name
 
         holder.itemView.setOnClickListener {
             onItemClickListener.onClick(position, itemView.name)
+            notifyDataSetChanged()
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.myapplication.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,11 +30,13 @@ class AdapterSelectExperties(
         return expertiesList.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: ExpertiesViewHolder, position: Int) {
         val itemView = expertiesList[position]
         holder.expText.text = itemView.name
         holder.itemView.setOnClickListener {
             onItemClickListener.onCLick(position, itemView.name)
+            notifyDataSetChanged()
         }
     }
 
