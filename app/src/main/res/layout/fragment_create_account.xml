@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CreateAccountFragment">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:src="@drawable/create_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Create Account"
+            android:textAlignment="center"
+            android:textColor="#1F68AB"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+
+        <EditText
+            android:id="@+id/Full_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Full Name"
+            android:inputType="text"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Email_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Full_Name"
+            app:layout_constraintStart_toStartOf="@+id/Full_Name"
+            app:layout_constraintTop_toBottomOf="@+id/Full_Name" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Email_Address"
+            app:layout_constraintStart_toStartOf="@+id/Email_Address"
+            app:layout_constraintTop_toBottomOf="@+id/Email_Address" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Confirm_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Password"
+            app:layout_constraintStart_toStartOf="@+id/Password"
+            app:layout_constraintTop_toBottomOf="@+id/Password" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Mobile_Number_Create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:ems="10"
+            android:hint="Mobile Number"
+            android:inputType="number"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Confirm_Password"
+            app:layout_constraintStart_toEndOf="@+id/Number"
+            app:layout_constraintTop_toBottomOf="@+id/Confirm_Password" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="+91"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintStart_toStartOf="@+id/Confirm_Password"
+            app:layout_constraintTop_toBottomOf="@+id/Confirm_Password" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Company_Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Company Name"
+            android:inputType="text"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Mobile_Number_Create"
+            app:layout_constraintStart_toStartOf="@+id/Mobile_Number_Create"
+            app:layout_constraintTop_toBottomOf="@+id/Mobile_Number_Create" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Current_Desg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Current Designation"
+            android:inputType="text"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Company_Name"
+            app:layout_constraintStart_toStartOf="@+id/Company_Name"
+            app:layout_constraintTop_toBottomOf="@+id/Company_Name" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Postal_Address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Postal Address"
+            android:inputType="text"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Current_Desg"
+            app:layout_constraintStart_toStartOf="@+id/Current_Desg"
+            app:layout_constraintTop_toBottomOf="@+id/Current_Desg" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/City"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="City"
+            android:inputType="text"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Postal_Address"
+            app:layout_constraintStart_toStartOf="@+id/Postal_Address"
+            app:layout_constraintTop_toBottomOf="@+id/Postal_Address" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Pin_Code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Pin Code"
+            android:inputType="number"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/City"
+            app:layout_constraintStart_toStartOf="@+id/City"
+            app:layout_constraintTop_toBottomOf="@+id/City" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Select_Country_Create_Account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="Country"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Pin_Code"
+            app:layout_constraintStart_toStartOf="@+id/Pin_Code"
+            app:layout_constraintTop_toBottomOf="@+id/Pin_Code" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Select_Industry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="Select Industry"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Select_Country_Create_Account"
+            app:layout_constraintStart_toStartOf="@+id/Select_Country_Create_Account"
+            app:layout_constraintTop_toBottomOf="@+id/Select_Country_Create_Account" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/Select_Expertise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:editable="false"
+            android:focusable="false"
+            android:hint="Select Expertise"
+            android:textColor="#1F68AB"
+            android:textColorHint="#1F68AB"
+            app:backgroundTint="#1F68AB"
+            app:layout_constraintEnd_toEndOf="@+id/Select_Industry"
+            app:layout_constraintStart_toStartOf="@+id/Select_Industry"
+            app:layout_constraintTop_toBottomOf="@+id/Select_Industry"
+
+            />
+
+        <TextView
+            android:id="@+id/Policy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="By Continuing.I agree to the Terms of Use and \n Private Policy"
+            android:textAlignment="center"
+            android:textColor="#1F68AB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Select_Expertise" />
+
+        <Button
+            android:id="@+id/Create_Account_to_Login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/black_rectengel"
+            android:backgroundTint="@color/black"
+            android:text="Create Account"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/Policy"
+            app:layout_constraintStart_toStartOf="@+id/Policy"
+            app:layout_constraintTop_toBottomOf="@+id/Policy" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

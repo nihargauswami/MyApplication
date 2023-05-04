@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.myapplication.Fragment.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.example.myapplication.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.myapplication.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_countryCodeFragment"
+            app:destination="@id/countryCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createAccountFragment"
+        android:name="com.example.myapplication.CreateAccountFragment"
+        android:label="CreateAccountFragment" >
+        <action
+            android:id="@+id/action_createAccountFragment_to_countryFragment2"
+            app:destination="@id/countryFragment" />
+        <action
+            android:id="@+id/action_createAccountFragment_to_countryCodeFragment"
+            app:destination="@id/countryCodeFragment" />
+        <action
+            android:id="@+id/action_createAccountFragment_to_selectIndustryFragment"
+            app:destination="@id/selectIndustryFragment" />
+        <action
+            android:id="@+id/action_createAccountFragment_to_selectExpertiseFragment"
+            app:destination="@id/selectExpertiseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countryCodeFragment"
+        android:name="com.example.myapplication.Fragment.CountryCodeFragment"
+        android:label="fragment_country_code"
+        tools:layout="@layout/fragment_country_code" >
+        <action
+            android:id="@+id/action_countryCodeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/countryFragment"
+        android:name="com.example.myapplication.Fragment.CountryFragment"
+        android:label="fragment_country"
+        tools:layout="@layout/fragment_country" >
+        <action
+            android:id="@+id/action_countryFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectIndustryFragment"
+        android:name="com.example.myapplication.Fragment.SelectIndustryFragment"
+        android:label="fragment_select_industry"
+        tools:layout="@layout/fragment_select_industry" >
+        <action
+            android:id="@+id/action_selectIndustryFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectExpertiseFragment"
+        android:name="com.example.myapplication.Fragment.SelectExpertiseFragment"
+        android:label="fragment_select_expertise"
+        tools:layout="@layout/fragment_select_expertise" >
+        <action
+            android:id="@+id/action_selectExpertiseFragment_to_createAccountFragment"
+            app:destination="@id/createAccountFragment" />
+    </fragment>
+</navigation>
