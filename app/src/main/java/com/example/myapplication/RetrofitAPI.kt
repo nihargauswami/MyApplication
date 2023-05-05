@@ -1,14 +1,12 @@
 package com.example.myapplication
 
 
-import com.example.myapplication.Model.AllData
-import com.example.myapplication.Model.Countries
 import com.example.myapplication.Model.Data
-import com.example.myapplication.Model.Expertise
+import com.example.myapplication.Model.PostData
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Headers
+import retrofit2.http.POST
 
 interface RetrofitAPI {
 
@@ -19,7 +17,7 @@ interface RetrofitAPI {
     fun getEmployees(): Call<UserDataModel>
 
 
-//    @Headers(
+    //    @Headers(
 //        "device-name:ONEPLUS A6000",
 //        "device-os:Android",
 //        "device-os-version:11",
@@ -29,5 +27,10 @@ interface RetrofitAPI {
 //    )
     @GET("newUsers/signupRequireData")
     fun getCountyCode(): Call<Data>
+
+    @POST("/newUsers/v1/addTrialUser")
+    fun posting(
+        @Body postItem: PostData
+    ) : Call<PostData>
 
 }

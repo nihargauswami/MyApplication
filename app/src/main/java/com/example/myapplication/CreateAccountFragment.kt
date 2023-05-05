@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,15 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.myapplication.Model.PostData
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 
 
 class CreateAccountFragment : Fragment() {
@@ -59,6 +68,7 @@ class CreateAccountFragment : Fragment() {
         button = view.findViewById(R.id.Create_Account_to_Login)
         button.setOnClickListener {
             validation()
+            addData()
         }
 
         navigateToCountry()
@@ -68,23 +78,19 @@ class CreateAccountFragment : Fragment() {
     }
 
     private fun setFragmentListener() {
-        setFragmentResultListener("1"){
-            requestKey, bundle ->
+        setFragmentResultListener("1") { requestKey, bundle ->
             val result = bundle.getString("country")
-                country.text = result
+            country.text = result
         }
-        setFragmentResultListener("2"){
-            requestKey, bundle ->
+        setFragmentResultListener("2") { requestKey, bundle ->
             val result = bundle.getString("experties")
             selectExpertise.text = result
         }
-        setFragmentResultListener("3"){
-            requestKey, bundle ->
+        setFragmentResultListener("3") { requestKey, bundle ->
             val result = bundle.getString("industry")
             selectIndustry.text = result
         }
-        setFragmentResultListener("4"){
-            requestKey, bundle ->
+        setFragmentResultListener("4") { requestKey, bundle ->
             val result = bundle.getString("phonecode")
             countryCode.text = result
         }
@@ -104,7 +110,7 @@ class CreateAccountFragment : Fragment() {
         selectExpertise.setOnClickListener {
             findNavController().navigate(R.id.action_createAccountFragment_to_selectExpertiseFragment)
         }
-        }
+    }
 
 
     private fun validation() {
@@ -128,6 +134,64 @@ class CreateAccountFragment : Fragment() {
             Toast.makeText(activity, "provide pinCode", Toast.LENGTH_SHORT).show()
         }
 
+
+    }
+
+    private fun addData() {
+        val fullName = fullName.text.toString()
+        val emailAddress = emailAddress.text.toString()
+        val password = password.text.toString()
+        val confirmPassword = confirmPassword.text.toString()
+        val countryCode = countryCode.text.toString()
+        val mobileNumber = mobileNumber.text.toString()
+        val companyName = companyName.text.toString()
+        val currentDesignation = currentDesignation.text.toString()
+        val postalAddress = postalAddress.text.toString()
+        val city = city.text.toString()
+        val country = country.text.toString()
+        val pinCode = pinCode.text.toString()
+        val selectIndustry = selectIndustry.text.toString()
+        val selectExpertise = selectExpertise.text.toString()
+
+        val modal = PostData(
+            fullName,
+            mobileNumber,
+            countryCode,
+            password,
+            emailAddress,
+            currentDesignation,
+            companyName,
+            postalAddress,
+            city,
+            country,
+            selectIndustry,
+            pinCode,
+            selectExpertise
+        )
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://ec2-15-206-100-11.ap-south-1.compute.amazonaws.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(RetrofitAPI::class.java)
+            .posting(modal)
+
+
+        retrofit.enqueue(object : Callback<PostData> {
+            override fun onResponse(call: Call<PostData>, response: Response<PostData>) {
+
+                if (response.isSuccessful) {
+                    response.code()
+                    Log.d("responce", response.body().toString())
+                }
+
+
+            }
+
+            override fun onFailure(call: Call<PostData>, t: Throwable) {
+                Log.d("error", t.message.toString())
+            }
+        })
 
     }
 
