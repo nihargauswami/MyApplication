@@ -79,7 +79,11 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
     private fun goToPreviousScreen(userInput: String, id: Int) {
         setFragmentResult(
             "2",
-            bundleOf("experties" to userInput, "id" to id)
+            bundleOf("experties" to userInput)
+        )
+        setFragmentResult(
+            "6",
+            bundleOf("id" to id)
         )
 
     }

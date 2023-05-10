@@ -93,20 +93,21 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
         return view
     }
 
-    private fun gotoPreviousScreen(userInput: String, id: Int) {
+    private fun gotoPreviousScreen(userInput: String) {
         setFragmentResult(
             "1",
-            bundleOf("phonecode" to userInput, "id" to id)
+            bundleOf("phonecode" to userInput)
         )
         setFragmentResult(
             "4",
-            bundleOf("phonecode" to userInput, "id" to id)
+            bundleOf("phonecode" to userInput)
         )
+
     }
 
 
     override fun onClick(phonecode: String, position: Int, id: Int) {
-        gotoPreviousScreen(phonecode, id)
+        gotoPreviousScreen(phonecode)
         findNavController().navigateUp()
 
     }

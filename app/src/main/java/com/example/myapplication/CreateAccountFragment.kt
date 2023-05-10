@@ -23,6 +23,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
+@Suppress("DEPRECATION")
 class CreateAccountFragment : Fragment() {
 
     private lateinit var fullName: EditText
@@ -40,6 +41,9 @@ class CreateAccountFragment : Fragment() {
     private lateinit var selectIndustry: TextView
     private lateinit var selectExpertise: TextView
     private lateinit var button: Button
+    private var country_id: Int = 1
+    private var selectExperties_id: Int = 1
+    private var selectIndustry_id: Int = 1
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -93,6 +97,21 @@ class CreateAccountFragment : Fragment() {
             val result = bundle.getString("phonecode")
             countryCode.text = result
         }
+        setFragmentResultListener("5") { requestKey, bundle ->
+            val result = bundle.get("id")
+            country_id = result as Int
+        }
+        setFragmentResultListener("6") { requestKey, bundle ->
+            val result = bundle.get("id")
+            selectExperties_id = result as Int
+
+        }
+        setFragmentResultListener("7") { requestKey, bundle ->
+            val result = bundle.get("id")
+            selectIndustry_id = result as Int
+
+        }
+
     }
 
     private fun navigateToCountry() {
@@ -131,6 +150,7 @@ class CreateAccountFragment : Fragment() {
             Toast.makeText(activity, "provide postal Address", Toast.LENGTH_SHORT).show()
         } else if (pinCode.text.isEmpty()) {
             Toast.makeText(activity, "provide pinCode", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_createAccountFragment_to_loginFragment)
         }
 
 
@@ -146,11 +166,10 @@ class CreateAccountFragment : Fragment() {
         val currentDesignation = currentDesignation.text.toString()
         val postalAddress = postalAddress.text.toString()
         val city = city.text.toString()
-        val country = country.text.toString().toInt()
+        val country = country_id
         val pinCode = pinCode.text.toString()
-        val selectIndustry = selectIndustry.text.toString()
-        val selectExpertise = selectExpertise.text.toString()
-
+        val selectIndustry = selectExperties_id.toString()
+        val selectExpertise = selectIndustry_id.toString()
         val modal = PostData(
             fullName,
             mobileNumber,

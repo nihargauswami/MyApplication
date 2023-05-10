@@ -70,7 +70,10 @@ class CountryFragment : Fragment(), AdapterCountry.OnItemClickListener {
     private fun gotoPreviousScreen(userInput: String, id: Int) {
         setFragmentResult(
             "1",
-            bundleOf("country" to userInput, "id" to id)
+            bundleOf("country" to userInput)
+        )
+        setFragmentResult("5",
+            bundleOf("id" to id)
         )
     }
 

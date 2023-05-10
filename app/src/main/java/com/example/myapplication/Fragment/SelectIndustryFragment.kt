@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -75,8 +76,11 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
     private fun gotoPreviousScreen(userInput: String, id: Int) {
         setFragmentResult(
             "3",
-            bundleOf("industry" to userInput, "id" to id)
+            bundleOf("industry" to userInput)
         )
+        setFragmentResult("7",
+        bundleOf("id" to id)
+            )
     }
 
     override fun onClick(position: Int, industry: String, id: Int) {
