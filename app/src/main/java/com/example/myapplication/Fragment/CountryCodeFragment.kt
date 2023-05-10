@@ -6,17 +6,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
-import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Adapter.AdapterCountryCode
-import com.example.myapplication.LoginFragment
-import com.example.myapplication.Model.Countries
 import com.example.myapplication.Model.Data
 import com.example.myapplication.MyIntercepter
 import com.example.myapplication.R
@@ -29,7 +26,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
-    //    lateinit var searchView: SearchView
     lateinit var recyclerView: RecyclerView
 
     @SuppressLint("MissingInflatedId")
@@ -40,7 +36,7 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_country_code, container, false)
 
-//        searchView = view.findViewById(R.id.Search_Country)
+
         recyclerView = view.findViewById(R.id.Recycler_View_Country)
 
 
@@ -78,28 +74,20 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
 
         })
 
+        val searchView: SearchView = view.findViewById(R.id.Search_Country)
 
-//
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                filterList()
-//                return true
-//            }
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
 
-//            private fun filterList(query: String?) {
-//if (query != null){
-//val filterList = ArrayList<Countries>()
-//for (i in retrofit.)
-//}
-//
-//            }
-//
-//        })
-//
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+
+
+        })
+
 
 
         return view

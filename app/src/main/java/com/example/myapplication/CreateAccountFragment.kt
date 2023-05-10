@@ -177,13 +177,13 @@ class CreateAccountFragment : Fragment() {
             .build()
             .create(RetrofitAPI::class.java)
             .posting(modal)
-        retrofit.enqueue(object : Callback<AddUserResponse>{
+        retrofit.enqueue(object : Callback<AddUserResponse> {
             override fun onResponse(
                 call: Call<AddUserResponse>,
                 response: Response<AddUserResponse>
             ) {
-                if(response.isSuccessful){
-                    Log.d("Success",response.body().toString())
+                if (response.isSuccessful) {
+                    Log.d("Success", response.body().toString())
                 }
             }
 
@@ -191,14 +191,14 @@ class CreateAccountFragment : Fragment() {
                 call: Call<AddUserResponse>,
                 t: Throwable
             ) {
-                Log.d("error",t.message.toString())
+                Log.d("error", t.message.toString())
             }
         })
 
 
-        }
-
     }
+
+}
 
 
 
