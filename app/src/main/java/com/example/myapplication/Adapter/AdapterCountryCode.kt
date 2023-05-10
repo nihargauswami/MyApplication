@@ -15,9 +15,7 @@ class AdapterCountryCode(
 ) :
     RecyclerView.Adapter<AdapterCountryCode.CountryViewHolder>() {
 
-    init {
 
-    }
 
     inner class CountryViewHolder(itemview: View, onItemClickListener: OnItemClickListener) :
         RecyclerView.ViewHolder(itemview) {
