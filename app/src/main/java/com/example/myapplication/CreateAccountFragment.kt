@@ -39,7 +39,6 @@ class CreateAccountFragment : Fragment() {
     private lateinit var country: TextView
     private lateinit var selectIndustry: TextView
     private lateinit var selectExpertise: TextView
-
     private lateinit var button: Button
 
     @SuppressLint("MissingInflatedId")
@@ -79,7 +78,7 @@ class CreateAccountFragment : Fragment() {
 
     private fun setFragmentListener() {
         setFragmentResultListener("1") { requestKey, bundle ->
-            val result = bundle.getString("country"  )
+            val result = bundle.getString("country")
             country.text = result
         }
         setFragmentResultListener("2") { requestKey, bundle ->
