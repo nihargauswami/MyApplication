@@ -17,16 +17,12 @@ class AdapterCountryCode(
 
 
 
-    inner class CountryViewHolder(itemview: View, onItemClickListener: OnItemClickListener) :
+    inner class CountryViewHolder(itemview: View) :
         RecyclerView.ViewHolder(itemview) {
         val countryCode: TextView = itemview.findViewById(R.id.Country_Code_1)
         val countries: TextView = itemview.findViewById(R.id.Country)
 
-//        init {
-//            itemview.setOnClickListener {
-//                onItemClickListener.onClick(adapterPosition)
-//            }
-//        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
@@ -34,7 +30,7 @@ class AdapterCountryCode(
             .inflate(R.layout.list_item_country_code, parent, false)
 
 
-        return CountryViewHolder(itemview, onItemClickListener)
+        return CountryViewHolder(itemview)
     }
 
     override fun getItemCount(): Int {
