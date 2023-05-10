@@ -25,7 +25,7 @@ class SplashScreenFragment : Fragment() {
 
         Handler(Looper.myLooper()!!).postDelayed({
             findNavController().navigate(R.id.action_splashScreenFragment_to_startFragment)
-        }, 5000)
+        }, 3000)
 
         return view
     }
