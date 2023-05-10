@@ -18,6 +18,7 @@ class AdapterSelectIndustry(
 
     inner class IndustryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val industry: TextView = itemView.findViewById(R.id.Counrty_Craete_Account)
+        var id: Int = -1
 
 
     }
@@ -36,9 +37,9 @@ class AdapterSelectIndustry(
     override fun onBindViewHolder(holder: AdapterSelectIndustry.IndustryViewHolder, position: Int) {
         val itemView = industryList[position]
         holder.industry.text = itemView.name
-
+        holder.id = itemView.id
         holder.itemView.setOnClickListener {
-            onItemClickListener.onClick(position, itemView.name)
+            onItemClickListener.onClick(position, itemView.name, itemView.id)
             notifyDataSetChanged()
         }
     }
@@ -48,6 +49,6 @@ class AdapterSelectIndustry(
     }
 
     interface OnItemClickListener {
-        fun onClick(position: Int, industry: String)
+        fun onClick(position: Int, industry: String, id: Int)
     }
 }

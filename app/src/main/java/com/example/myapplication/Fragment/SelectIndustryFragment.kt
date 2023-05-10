@@ -72,16 +72,16 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
         return view
     }
 
-    private fun gotoPreviousScreen(userInput: String) {
+    private fun gotoPreviousScreen(userInput: String, id: Int) {
         setFragmentResult(
             "3",
-            bundleOf("industry" to userInput)
+            bundleOf("industry" to userInput, "id" to id)
         )
     }
 
-    override fun onClick(position: Int, industry: String) {
+    override fun onClick(position: Int, industry: String, id: Int) {
 
-        gotoPreviousScreen(industry)
+        gotoPreviousScreen(industry, id)
         findNavController().navigateUp()
 
     }

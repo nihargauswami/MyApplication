@@ -76,16 +76,16 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
 
     }
 
-    private fun goToPreviousScreen(userInput: String) {
+    private fun goToPreviousScreen(userInput: String, id: Int) {
         setFragmentResult(
             "2",
-            bundleOf("experties" to userInput)
+            bundleOf("experties" to userInput, "id" to id)
         )
 
     }
 
-    override fun onCLick(position: Int, expertise: String) {
-        goToPreviousScreen(expertise)
+    override fun onCLick(position: Int, expertise: String, id: Int) {
+        goToPreviousScreen(expertise, id)
         findNavController().navigateUp()
 
 

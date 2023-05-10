@@ -17,6 +17,7 @@ class AdapterSelectExperties(
 
     inner class ExpertiesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val expText: TextView = itemView.findViewById(R.id.Counrty_Craete_Account)
+        var id: Int = -1
 
     }
 
@@ -34,14 +35,15 @@ class AdapterSelectExperties(
     override fun onBindViewHolder(holder: ExpertiesViewHolder, position: Int) {
         val itemView = expertiesList[position]
         holder.expText.text = itemView.name
+        holder.id = itemView.id
         holder.itemView.setOnClickListener {
-            onItemClickListener.onCLick(position, itemView.name)
+            onItemClickListener.onCLick(position, itemView.name, itemView.id)
             notifyDataSetChanged()
         }
     }
 
     interface OnItemClickListener {
-        fun onCLick(position: Int, expertise: String)
+        fun onCLick(position: Int, expertise: String, id: Int)
     }
 
 }

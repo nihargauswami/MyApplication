@@ -67,16 +67,16 @@ class CountryFragment : Fragment(), AdapterCountry.OnItemClickListener {
         return view
     }
 
-    private fun gotoPreviousScreen(userInput: String) {
+    private fun gotoPreviousScreen(userInput: String, id: Int) {
         setFragmentResult(
             "1",
-            bundleOf("country" to userInput)
+            bundleOf("country" to userInput, "id" to id)
         )
     }
 
-    override fun onClick(position: Int, country: String) {
+    override fun onClick(position: Int, country: String, id: Int) {
 
-        gotoPreviousScreen(country)
+        gotoPreviousScreen(country, id)
         findNavController().navigateUp()
 
     }

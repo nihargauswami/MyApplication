@@ -20,7 +20,7 @@ class AdapterCountryCode(
         RecyclerView.ViewHolder(itemview) {
         val countryCode: TextView = itemview.findViewById(R.id.Country_Code_1)
         val countries: TextView = itemview.findViewById(R.id.Country)
-        var id : Int = -1
+        var id: Int = -1
 
 
     }
@@ -44,7 +44,7 @@ class AdapterCountryCode(
         holder.id = itemList.id
         holder.countryCode.text = itemList.phonecode.toString()
         holder.itemView.setOnClickListener {
-            onItemClickListener.onClick(itemList.phonecode.toString(), position , itemList.id.toString().toInt())
+            onItemClickListener.onClick(itemList.phonecode.toString(), position, itemList.id)
             notifyDataSetChanged()
         }
 
@@ -52,7 +52,7 @@ class AdapterCountryCode(
 
 
     interface OnItemClickListener {
-        fun onClick(phonecode: String, position: Int , id : Int)
+        fun onClick(phonecode: String, position: Int, id: Int)
 
     }
 }
