@@ -32,6 +32,7 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var countryCodeList: MutableList<Countries>
     private var adapter: AdapterCountryCode? = null
+
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
