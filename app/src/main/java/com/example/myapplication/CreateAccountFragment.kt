@@ -72,6 +72,7 @@ class CreateAccountFragment : Fragment() {
         button.setOnClickListener {
             validation()
             addData()
+            findNavController().navigate(R.id.action_createAccountFragment_to_loginFragment)
         }
 
         navigateToCountry()
@@ -150,7 +151,6 @@ class CreateAccountFragment : Fragment() {
             Toast.makeText(activity, "provide postal Address", Toast.LENGTH_SHORT).show()
         } else if (pinCode.text.isEmpty()) {
             Toast.makeText(activity, "provide pinCode", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_createAccountFragment_to_loginFragment)
         }
 
 
