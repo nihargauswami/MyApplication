@@ -4,20 +4,24 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Countries
 import com.example.myapplication.R
+import java.util.Locale
 
 class AdapterCountryCode(
     private var countryList: MutableList<Countries>,
     private val onItemClickListener: OnItemClickListener
 ) :
-    RecyclerView.Adapter<AdapterCountryCode.CountryViewHolder>() {
+    RecyclerView.Adapter<AdapterCountryCode.CountryViewHolder>(){
+//    var countryFilterList = countryList
 
     @SuppressLint("NotifyDataSetChanged")
     fun setFilteredList(newCountryList: MutableList<Countries>) {
-        this.countryList = newCountryList
+        countryList = newCountryList
         notifyDataSetChanged()
     }
 
@@ -61,5 +65,38 @@ class AdapterCountryCode(
         fun onClick(phonecode: String, position: Int, id: Int)
 
     }
-
 }
+
+    /*override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    countryFilterList = countryList as ArrayList<Countries>
+                } else {
+                    val resultList = ArrayList<Countries>()
+                    for (row in countryList) {
+                        if (row.name.lowercase(Locale.ROOT).contains(
+                                constraint.toString()
+                                    .lowercase(Locale.ROOT)
+                            )
+                        ) {
+                            resultList.add(row)
+                        }
+                    }
+                    countryFilterList = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = countryFilterList
+                return filterResults
+            }
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                countryFilterList = results?.values as ArrayList<Countries>
+                notifyDataSetChanged()
+            }
+        }
+    }
+}*/
+

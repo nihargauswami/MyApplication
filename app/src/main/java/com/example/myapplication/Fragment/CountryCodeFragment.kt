@@ -31,7 +31,7 @@ import java.util.Locale
 class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var countryCodeList: MutableList<Countries>
-
+    var adapter: AdapterCountryCode? = null
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +42,6 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
 
 
         recyclerView = view.findViewById(R.id.Recycler_View_Country)
-
 
         val client = OkHttpClient.Builder().apply {
             addInterceptor(MyIntercepter())
@@ -59,15 +58,14 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
             override fun onResponse(call: Call<Data>, response: Response<Data>) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()?.data?.countries
-                    val adapter = AdapterCountryCode(responseBody!!, this@CountryCodeFragment)
+                    adapter = AdapterCountryCode(responseBody!!, this@CountryCodeFragment)
                     recyclerView.apply {
                         layoutManager = LinearLayoutManager(context)
                         recyclerView.adapter =
                             AdapterCountryCode(responseBody, this@CountryCodeFragment)
                         recyclerView.adapter = adapter
-                        countryCodeList = responseBody
-
                     }
+                    countryCodeList = responseBody
                 }
 
             }
@@ -88,6 +86,8 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 filterList(newText)
+//                adapter = AdapterCountryCode(countryCodeList,this@CountryCodeFragment)
+//                adapter!!.filter.filter(newText)
                 return true
             }
 
@@ -107,11 +107,12 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
                     filterList.add(i)
                 }
             }
-            if (filterList.isEmpty()){
-                Toast.makeText(activity,"No data Found",Toast.LENGTH_SHORT).show()
-            }else{
-                val adapter = AdapterCountryCode(filterList, this)
-                adapter.setFilteredList(filterList)
+            if (filterList.isEmpty()) {
+                Toast.makeText(activity, "No data Found", Toast.LENGTH_SHORT).show()
+            } else {
+                adapter = AdapterCountryCode(filterList, this)
+                adapter!!.setFilteredList(filterList)
+                recyclerView.adapter = adapter
             }
         }
 
