@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Adapter.AdapterCountryCode
+import com.example.myapplication.Model.Countries
 import com.example.myapplication.Model.Data
 import com.example.myapplication.MyIntercepter
 import com.example.myapplication.R
@@ -24,9 +26,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.Locale
 
 class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var countryCodeList: MutableList<Countries>
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -61,6 +65,7 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
                         recyclerView.adapter =
                             AdapterCountryCode(responseBody, this@CountryCodeFragment)
                         recyclerView.adapter = adapter
+                        countryCodeList = responseBody
 
                     }
                 }
@@ -82,6 +87,7 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
                 return true
             }
 
@@ -91,6 +97,24 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
 
 
         return view
+    }
+
+    private fun filterList(query: String?) {
+        if (query != null) {
+            val filterList = ArrayList<Countries>()
+            for (i in countryCodeList) {
+                if (i.name.lowercase(Locale.ROOT).contains(query)) {
+                    filterList.add(i)
+                }
+            }
+            if (filterList.isEmpty()){
+                Toast.makeText(activity,"No data Found",Toast.LENGTH_SHORT).show()
+            }else{
+                val adapter = AdapterCountryCode(filterList, this)
+                adapter.setFilteredList(filterList)
+            }
+        }
+
     }
 
     private fun gotoPreviousScreen(userInput: String) {

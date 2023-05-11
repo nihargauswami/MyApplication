@@ -13,13 +13,17 @@ import com.example.myapplication.R
 import java.util.Locale
 
 class AdapterCountryCode(
-    private val countryList: MutableList<Countries>,
+    private var countryList: MutableList<Countries>,
     private val onItemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<AdapterCountryCode.CountryViewHolder>() {
 
+@SuppressLint("NotifyDataSetChanged")
+fun  setFilteredList(countryList: MutableList<Countries>){
+    this.countryList = countryList
+    notifyDataSetChanged()
+}
 
-    private var filteredList = countryList
 
     inner class CountryViewHolder(itemview: View) :
         RecyclerView.ViewHolder(itemview) {
