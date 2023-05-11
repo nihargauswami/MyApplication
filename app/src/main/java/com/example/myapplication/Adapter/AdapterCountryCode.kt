@@ -16,8 +16,8 @@ class AdapterCountryCode(
     RecyclerView.Adapter<AdapterCountryCode.CountryViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setFilteredList(countryList: MutableList<Countries>) {
-        this.countryList = countryList
+    fun setFilteredList(newCountryList: MutableList<Countries>) {
+        this.countryList = newCountryList
         notifyDataSetChanged()
     }
 
@@ -40,7 +40,7 @@ class AdapterCountryCode(
     }
 
     override fun getItemCount(): Int {
-        return this.countryList.size
+        return countryList.size
     }
 
     @SuppressLint("NotifyDataSetChanged")
