@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Countries
@@ -15,11 +17,11 @@ class AdapterCountryCode(
 ) :
     RecyclerView.Adapter<AdapterCountryCode.CountryViewHolder>() {
 
-@SuppressLint("NotifyDataSetChanged")
-fun  setFilteredList(countryList: MutableList<Countries>){
-    this.countryList = countryList
-    notifyDataSetChanged()
-}
+    @SuppressLint("NotifyDataSetChanged")
+    fun setFilteredList(countryList: MutableList<Countries>) {
+        this.countryList = countryList
+        notifyDataSetChanged()
+    }
 
 
     inner class CountryViewHolder(itemview: View) :
@@ -61,4 +63,5 @@ fun  setFilteredList(countryList: MutableList<Countries>){
         fun onClick(phonecode: String, position: Int, id: Int)
 
     }
+
 }

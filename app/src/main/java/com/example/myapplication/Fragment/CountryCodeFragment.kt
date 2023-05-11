@@ -90,8 +90,6 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
                 filterList(newText)
                 return true
             }
-
-
         })
 
 
@@ -107,9 +105,9 @@ class CountryCodeFragment : Fragment(), AdapterCountryCode.OnItemClickListener {
                     filterList.add(i)
                 }
             }
-            if (filterList.isEmpty()){
-                Toast.makeText(activity,"No data Found",Toast.LENGTH_SHORT).show()
-            }else{
+            if (filterList.isEmpty()) {
+                Toast.makeText(activity, "No data Found", Toast.LENGTH_SHORT).show()
+            } else {
                 val adapter = AdapterCountryCode(filterList, this)
                 adapter.setFilteredList(filterList)
             }
