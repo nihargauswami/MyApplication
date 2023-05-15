@@ -27,7 +27,7 @@ class AdapterCountry(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_item_country, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.select_country_create_account, parent, false)
         return CountryViewHolder(itemView)
     }
 

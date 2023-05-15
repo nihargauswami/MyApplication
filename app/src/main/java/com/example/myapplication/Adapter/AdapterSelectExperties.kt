@@ -21,14 +21,14 @@ class AdapterSelectExperties(
     }
 
     inner class ExpertiesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val expText: TextView = itemView.findViewById(R.id.Counrty_Craete_Account)
+        val expText: TextView = itemView.findViewById(R.id.Select_Ind_Craete_Account)
         var id: Int = -1
 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpertiesViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_item_country, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item_ind_exp, parent, false)
         return ExpertiesViewHolder(itemView)
     }
 

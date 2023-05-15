@@ -22,7 +22,7 @@ class AdapterSelectIndustry(
 
 
     inner class IndustryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val industry: TextView = itemView.findViewById(R.id.Counrty_Craete_Account)
+        val industry: TextView = itemView.findViewById(R.id.Select_Ind_Craete_Account)
         var id: Int = -1
 
 
@@ -34,7 +34,7 @@ class AdapterSelectIndustry(
         viewType: Int
     ): AdapterSelectIndustry.IndustryViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.list_item_country, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item_ind_exp, parent, false)
         return IndustryViewHolder(itemView)
     }
 
