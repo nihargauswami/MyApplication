@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Adapter.AdapterSelectExperties
 import com.example.myapplication.Model.Data
+import com.example.myapplication.Model.Expertise
 import com.example.myapplication.MyIntercepter
 import com.example.myapplication.R
 import com.example.myapplication.RetrofitAPI
@@ -23,20 +26,24 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.Locale
 
 
 class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickListener {
 
-    lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchView : SearchView
+    private lateinit var expList: MutableList<Expertise>
+    private var adapter : AdapterSelectExperties ?= null
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "CutPasteId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_select_expertise, container, false)
-
+        searchView = view.findViewById(R.id.Search_Country_1_2)
         recyclerView = view.findViewById(R.id.Recycler_View_Country_2)
         val client = OkHttpClient.Builder().apply {
             addInterceptor(MyIntercepter())
@@ -63,6 +70,7 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
                                 this@SelectExpertiseFragment
                             )
                     }
+                    expList = response.body()?.data?.expertise!!
                 }
             }
 
@@ -72,8 +80,44 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
 
         })
 
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+
+        })
+
+
+
+
+
         return view
 
+    }
+
+    private fun filterList(query : String?) {
+        if (query != null) {
+            val filterList = ArrayList<Expertise>()
+            for (i in expList){
+                if (i.name.lowercase(Locale.ROOT).contains(query)){
+                    filterList.add(i)
+                }
+            }
+            if (filterList.isEmpty()){
+                Toast.makeText(activity,"No data found",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                adapter = AdapterSelectExperties(filterList,this)
+                adapter!!.setFilterList(filterList)
+                recyclerView.adapter = adapter
+            }
+        }
     }
 
     private fun goToPreviousScreen(userInput: String, id: Int) {

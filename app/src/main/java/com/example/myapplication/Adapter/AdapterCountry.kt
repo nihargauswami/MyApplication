@@ -10,7 +10,7 @@ import com.example.myapplication.Model.Countries
 import com.example.myapplication.R
 
 class AdapterCountry(
-    private val countryList: MutableList<Countries>,
+    private var countryList: MutableList<Countries>,
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<AdapterCountry.CountryViewHolder>() {
 
@@ -18,6 +18,11 @@ class AdapterCountry(
         val country: TextView = itemView.findViewById(R.id.Counrty_Craete_Account)
         var id: Int = -1
 
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    fun setFilterList(newCountryList : MutableList<Countries>){
+        countryList = newCountryList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {

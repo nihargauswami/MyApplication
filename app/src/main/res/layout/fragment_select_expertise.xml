@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <androidx.appcompat.widget.SearchView
-            android:id="@+id/Search_Country_1"
+            android:id="@+id/Search_Country_1_2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:iconifiedByDefault="false"

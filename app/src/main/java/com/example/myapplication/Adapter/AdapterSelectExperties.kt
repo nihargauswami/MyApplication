@@ -10,10 +10,15 @@ import com.example.myapplication.Model.Expertise
 import com.example.myapplication.R
 
 class AdapterSelectExperties(
-    private val expertiesList: MutableList<Expertise>,
+    private var expertiesList: MutableList<Expertise>,
     private val onItemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<AdapterSelectExperties.ExpertiesViewHolder>() {
+    @SuppressLint("NotifyDataSetChanged")
+    fun setFilterList(newExpertiesList : MutableList<Expertise>){
+        expertiesList = newExpertiesList
+        notifyDataSetChanged()
+    }
 
     inner class ExpertiesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val expText: TextView = itemView.findViewById(R.id.Counrty_Craete_Account)
