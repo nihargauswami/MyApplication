@@ -6,14 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Model.Data
 import com.example.myapplication.Model.Industry
 import com.example.myapplication.R
 
 class AdapterSelectIndustry(
-    private val industryList: MutableList<Industry>,
+    private var industryList: MutableList<Industry>,
     private val onItemClickListener: OnItemClickListener
 ) : RecyclerView.Adapter<AdapterSelectIndustry.IndustryViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun filterList(newIndustryList: MutableList<Industry>) {
+        industryList = newIndustryList
+        notifyDataSetChanged()
+    }
 
 
     inner class IndustryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
