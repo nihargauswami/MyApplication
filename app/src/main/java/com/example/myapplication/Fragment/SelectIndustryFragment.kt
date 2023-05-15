@@ -121,8 +121,9 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
         )
     }
 
-    override fun onClick(position: Int, industry: String, id: Int) {
-
+    override fun onClick(position: Int, industry: String, id: Int, indList: ArrayList<String>) {
+        Toast.makeText(activity, indList.toString(), Toast.LENGTH_LONG).show()
+        Log.d("Success", indList.toString())
         gotoPreviousScreen(industry, id)
         findNavController().navigateUp()
 

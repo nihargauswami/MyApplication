@@ -3,5 +3,6 @@ package com.example.myapplication.Model
 data class Industry(
 
     val id : Int,
-    val name : String
+    val name : String,
+    val isSelecterd : Boolean
 )
