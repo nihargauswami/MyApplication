@@ -117,10 +117,9 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
 
 
     private fun gotoPreviousScreen(userInput: String, id: Int , indList: ArrayList<String>) {
-//        setFragmentResult(
-//            "3",
-//            bundleOf("industry" to userInput)
-//        )
+/*        "3",
+            bundleOf("industry" to userInput)
+        )*/
         setFragmentResult(
             "7",
             bundleOf("id" to id)
@@ -132,7 +131,6 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
     }
 
     override fun onClick( industry: String, id: Int, indList: ArrayList<String>) {
-        Toast.makeText(activity, indList.toString(), Toast.LENGTH_LONG).show()
         Log.d("Success", indList.toString())
         gotoPreviousScreen(industry, id , indList)
         findNavController().navigateUp()
