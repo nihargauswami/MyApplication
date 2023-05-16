@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.Model.AddUserResponse
+import com.example.myapplication.Model.Industry
 import com.example.myapplication.Model.PostData
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -112,6 +113,16 @@ class CreateAccountFragment : Fragment() {
             selectIndustry_id = result as Int
 
         }
+        setFragmentResultListener("8"){ requestKey, bundle ->
+        val result = bundle.getStringArrayList("indList")
+            selectIndustry.text = result.toString()
+
+        }
+        setFragmentResultListener("9"){ requestKey, bundle ->
+            val result = bundle.getStringArrayList("expList")
+            selectExpertise.text = result.toString()
+
+        }
 
     }
 
@@ -183,8 +194,8 @@ class CreateAccountFragment : Fragment() {
             pinCode,
             country,
             1,
-            listOf(selectIndustry),
-            listOf(selectExpertise),
+            arrayListOf(selectIndustry),
+            arrayListOf(selectExpertise),
             true
         )
 

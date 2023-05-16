@@ -13,8 +13,8 @@ data class PostData(
     val pin_code: String,
     val country_id: Int,
     val oauth_provider: Int,
-    val industryIds: List<String>,
-    val expertiseIds: List<String>,
+    val industryIds: ArrayList<String>,
+    val expertiseIds: ArrayList<String>,
     val isConsentAgreeed: Boolean
 )
 

@@ -3,7 +3,6 @@ package com.example.myapplication.Model
 data class Expertise(
 
     val id : Int,
-    val name : String,
-    var isSelected : Boolean
+    val name : String
 
 )

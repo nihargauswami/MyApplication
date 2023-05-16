@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
@@ -34,6 +35,7 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
     private lateinit var searchView: SearchView
     private var adapter: AdapterSelectIndustry? = null
     private lateinit var indList: MutableList<Industry>
+    private lateinit var button: Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -42,7 +44,7 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_select_industry, container, false)
-
+        button = view.findViewById(R.id.Button_Select)
         searchView = view.findViewById(R.id.Search_Industry)
         recyclerView = view.findViewById(R.id.Recycler_View_Select_Industry)
         val client = OkHttpClient.Builder().apply {
@@ -107,24 +109,32 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
                 recyclerView.adapter = adapter
             }
         }
+        button.setOnClickListener {
+
+        }
 
     }
 
-    private fun gotoPreviousScreen(userInput: String, id: Int) {
-        setFragmentResult(
-            "3",
-            bundleOf("industry" to userInput)
-        )
+
+    private fun gotoPreviousScreen(userInput: String, id: Int , indList: ArrayList<String>) {
+//        setFragmentResult(
+//            "3",
+//            bundleOf("industry" to userInput)
+//        )
         setFragmentResult(
             "7",
             bundleOf("id" to id)
         )
+        setFragmentResult(
+            "8",
+            bundleOf("indList" to indList)
+        )
     }
 
-    override fun onClick(position: Int, industry: String, id: Int, indList: ArrayList<String>) {
+    override fun onClick( industry: String, id: Int, indList: ArrayList<String>) {
         Toast.makeText(activity, indList.toString(), Toast.LENGTH_LONG).show()
         Log.d("Success", indList.toString())
-        gotoPreviousScreen(industry, id)
+        gotoPreviousScreen(industry, id , indList)
         findNavController().navigateUp()
 
     }

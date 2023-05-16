@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Industry
 import com.example.myapplication.R
+import okhttp3.internal.toImmutableList
 
 class AdapterSelectIndustry(
     private var industryList: MutableList<Industry>,
@@ -21,11 +22,11 @@ class AdapterSelectIndustry(
         notifyDataSetChanged()
     }
 
-    private val indList = ArrayList<String>()
+    private var indList = ArrayList<String>()
 
 
     inner class IndustryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val industry: TextView = itemView.findViewById(R.id.Select_Ind_Craete_Account)
+//        val industry: TextView = itemView.findViewById(R.id.Select_Ind_Craete_Account)
         var id: Int = -1
         val checkBox: CheckBox = itemView.findViewById(R.id.checkbox)
 
@@ -45,23 +46,23 @@ class AdapterSelectIndustry(
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: AdapterSelectIndustry.IndustryViewHolder, position: Int) {
         val itemView = industryList[position]
-        holder.industry.text = itemView.name
+//        holder.industry.text = itemView.name
         holder.id = itemView.id
-        holder.checkBox.isChecked = itemView.isSelecterd
+        holder.checkBox.text = itemView.name
         holder.itemView.setOnClickListener {
-            onItemClickListener.onClick(position, itemView.name, itemView.id, indList)
+            onItemClickListener.onClick( itemView.name, itemView.id, indList)
             notifyDataSetChanged()
         }
         holder.checkBox.setOnClickListener{
-            if (industryList != null && industryList.size > 0) {
-                holder.checkBox.text = itemView.name
+            if (industryList.size > 0) {
                 if (holder.checkBox.isChecked) {
-                    indList.add(industryList[position].toString())
+                    indList.add(industryList[position].name)
                 }else{
                     indList.remove(industryList.toString())
                 }
             }
-        }
+            }
+
 
     }
 
@@ -70,6 +71,6 @@ class AdapterSelectIndustry(
     }
 
     interface OnItemClickListener {
-        fun onClick(position: Int, industry: String, id: Int, indList : ArrayList<String>)
+        fun onClick( industry: String, id: Int, indList : ArrayList<String>)
     }
 }
