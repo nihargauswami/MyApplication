@@ -1,4 +1,4 @@
-package com.example.myapplication.model
+package com.example.myapplication.Model
 
 data class AllData(
     val industry : MutableList<Industry>,

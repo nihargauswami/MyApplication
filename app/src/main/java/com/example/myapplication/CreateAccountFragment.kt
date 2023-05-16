@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
-import com.example.myapplication.model.AddUserResponse
-import com.example.myapplication.model.PostData
+import com.example.myapplication.Model.AddUserResponse
+import com.example.myapplication.Model.PostData
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
