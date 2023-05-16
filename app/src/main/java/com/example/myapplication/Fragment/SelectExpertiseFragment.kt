@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
@@ -35,6 +36,7 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
     private lateinit var searchView: SearchView
     private lateinit var expList: MutableList<Expertise>
     private var adapter: AdapterSelectExperties? = null
+    private lateinit var button: Button
 
     @SuppressLint("MissingInflatedId", "CutPasteId")
     override fun onCreateView(
@@ -43,6 +45,7 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_select_expertise, container, false)
+        button = view.findViewById(R.id.Button_Select_Exp)
         searchView = view.findViewById(R.id.Search_Country_1_2)
         recyclerView = view.findViewById(R.id.Recycler_View_Country_2)
         val client = OkHttpClient.Builder().apply {
@@ -137,9 +140,9 @@ class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickLi
 
     override fun onCLick(position: Int, expertise: String, id: Int, expList: ArrayList<String>) {
         goToPreviousScreen(expertise, id, expList)
-        findNavController().navigateUp()
-
-
+        button.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 

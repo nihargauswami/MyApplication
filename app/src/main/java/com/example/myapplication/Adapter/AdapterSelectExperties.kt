@@ -47,24 +47,21 @@ class AdapterSelectExperties(
 //        holder.expText.text = itemView.name
         holder.checkBox.text = itemView.name
         holder.id = itemView.id
-        holder.itemView.setOnClickListener {
-            onItemClickListener.onCLick(position, itemView.name, itemView.id , expList)
-            notifyDataSetChanged()
-        }
         holder.checkBox.setOnClickListener {
-            if(expertiesList.size > 0){
-                if (holder.checkBox.isChecked){
+            if (expertiesList.size > 0) {
+                if (holder.checkBox.isChecked) {
                     expList.add(expertiesList[position].name)
-                }else{
+                } else {
                     expList.remove(expertiesList.toString())
                 }
-
             }
+            onItemClickListener.onCLick(position, itemView.name, itemView.id, expList)
+            notifyDataSetChanged()
         }
     }
 
     interface OnItemClickListener {
-        fun onCLick(position: Int, expertise: String, id: Int , expList : ArrayList<String>)
+        fun onCLick(position: Int, expertise: String, id: Int, expList: ArrayList<String>)
     }
 
 }

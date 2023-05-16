@@ -24,7 +24,7 @@ class AdapterSelectIndustry(
 
 
     inner class IndustryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        val industry: TextView = itemView.findViewById(R.id.Select_Ind_Craete_Account)
+        //        val industry: TextView = itemView.findViewById(R.id.Select_Ind_Craete_Account)
         var id: Int = -1
         val checkBox: CheckBox = itemView.findViewById(R.id.checkbox)
 
@@ -47,19 +47,17 @@ class AdapterSelectIndustry(
 //        holder.industry.text = itemView.name
         holder.id = itemView.id
         holder.checkBox.text = itemView.name
-        holder.itemView.setOnClickListener {
-            onItemClickListener.onClick( itemView.name, itemView.id, indList)
-            notifyDataSetChanged()
-        }
-        holder.checkBox.setOnClickListener{
+        holder.checkBox.setOnClickListener {
             if (industryList.size > 0) {
                 if (holder.checkBox.isChecked) {
                     indList.add(industryList[position].name)
-                }else{
+                } else {
                     indList.remove(industryList.toString())
                 }
             }
-            }
+            onItemClickListener.onClick(itemView.name, itemView.id, indList)
+            notifyDataSetChanged()
+        }
 
 
     }
@@ -69,6 +67,6 @@ class AdapterSelectIndustry(
     }
 
     interface OnItemClickListener {
-        fun onClick( industry: String, id: Int, indList : ArrayList<String>)
+        fun onClick(industry: String, id: Int, indList: ArrayList<String>)
     }
 }

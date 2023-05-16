@@ -109,9 +109,6 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
                 recyclerView.adapter = adapter
             }
         }
-        button.setOnClickListener {
-
-        }
 
     }
 
@@ -133,7 +130,9 @@ class SelectIndustryFragment : Fragment(), AdapterSelectIndustry.OnItemClickList
     override fun onClick(industry: String, id: Int, indList: ArrayList<String>) {
         Log.d("Success", indList.toString())
         gotoPreviousScreen(industry, id, indList)
-        findNavController().navigateUp()
+        button.setOnClickListener {
+            findNavController().navigateUp()
+        }
 
     }
 
