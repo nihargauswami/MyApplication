@@ -1,11 +1,10 @@
 package com.example.myapplication
 
 
-import com.example.myapplication.Model.AddUserResponse
-import com.example.myapplication.Model.Data
-import com.example.myapplication.Model.PostData
+import com.example.myapplication.model.AddUserResponse
+import com.example.myapplication.model.Data
+import com.example.myapplication.model.PostData
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.example.myapplication.Fragment.SplashScreenFragment"
+        android:name="com.example.myapplication.fragment.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/countryCodeFragment"
-        android:name="com.example.myapplication.Fragment.CountryCodeFragment"
+        android:name="com.example.myapplication.fragment.CountryCodeFragment"
         android:label="fragment_country_code"
         tools:layout="@layout/fragment_country_code" >
         <action
@@ -66,7 +66,7 @@
     </fragment>
     <fragment
         android:id="@+id/countryFragment"
-        android:name="com.example.myapplication.Fragment.CountryFragment"
+        android:name="com.example.myapplication.fragment.CountryFragment"
         android:label="fragment_country"
         tools:layout="@layout/fragment_country" >
         <action
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectIndustryFragment"
-        android:name="com.example.myapplication.Fragment.SelectIndustryFragment"
+        android:name="com.example.myapplication.fragment.SelectIndustryFragment"
         android:label="fragment_select_industry"
         tools:layout="@layout/fragment_select_industry" >
         <action
@@ -84,7 +84,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectExpertiseFragment"
-        android:name="com.example.myapplication.Fragment.SelectExpertiseFragment"
+        android:name="com.example.myapplication.fragment.SelectExpertiseFragment"
         android:label="fragment_select_expertise"
         tools:layout="@layout/fragment_select_expertise" >
         <action

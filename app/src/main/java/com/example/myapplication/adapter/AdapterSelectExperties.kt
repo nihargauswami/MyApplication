@@ -1,15 +1,13 @@
-package com.example.myapplication.Adapter
+package com.example.myapplication.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Model.Expertise
+import com.example.myapplication.model.Expertise
 import com.example.myapplication.R
-import kotlin.math.exp
 
 class AdapterSelectExperties(
     private var expertiesList: MutableList<Expertise>,

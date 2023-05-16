@@ -1,4 +1,4 @@
-package com.example.myapplication.Fragment
+package com.example.myapplication.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -15,9 +15,9 @@ import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Adapter.AdapterSelectIndustry
-import com.example.myapplication.Model.Data
-import com.example.myapplication.Model.Industry
+import com.example.myapplication.adapter.AdapterSelectIndustry
+import com.example.myapplication.model.Data
+import com.example.myapplication.model.Industry
 import com.example.myapplication.MyIntercepter
 import com.example.myapplication.R
 import com.example.myapplication.RetrofitAPI

@@ -1,16 +1,13 @@
-package com.example.myapplication.Adapter
+package com.example.myapplication.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Model.Countries
+import com.example.myapplication.model.Countries
 import com.example.myapplication.R
-import java.util.Locale
 
 class AdapterCountryCode(
     private var countryList: MutableList<Countries>,

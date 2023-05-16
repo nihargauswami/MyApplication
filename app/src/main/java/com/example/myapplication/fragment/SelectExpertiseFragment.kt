@@ -1,5 +1,6 @@
-package com.example.myapplication.Fragment
+package com.example.myapplication.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,9 +14,9 @@ import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Adapter.AdapterCountry
-import com.example.myapplication.Model.Countries
-import com.example.myapplication.Model.Data
+import com.example.myapplication.adapter.AdapterSelectExperties
+import com.example.myapplication.model.Data
+import com.example.myapplication.model.Expertise
 import com.example.myapplication.MyIntercepter
 import com.example.myapplication.R
 import com.example.myapplication.RetrofitAPI
@@ -27,24 +28,27 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Locale
 
-class CountryFragment : Fragment(), AdapterCountry.OnItemClickListener {
+
+class SelectExpertiseFragment : Fragment(), AdapterSelectExperties.OnItemClickListener {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchView: SearchView
-    private lateinit var countyList : MutableList<Countries>
-    private var adapter : AdapterCountry ?= null
+    private lateinit var expList: MutableList<Expertise>
+    private var adapter: AdapterSelectExperties? = null
 
+    @SuppressLint("MissingInflatedId", "CutPasteId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_country, container, false)
-
-        recyclerView = view.findViewById(R.id.Recycler_View_Country_1)
-
+        val view = inflater.inflate(R.layout.fragment_select_expertise, container, false)
+        searchView = view.findViewById(R.id.Search_Country_1_2)
+        recyclerView = view.findViewById(R.id.Recycler_View_Country_2)
         val client = OkHttpClient.Builder().apply {
             addInterceptor(MyIntercepter())
         }.build()
+
         val retrofit = Retrofit.Builder()
             .baseUrl("http://ec2-15-206-100-11.ap-south-1.compute.amazonaws.com/")
             .client(client)
@@ -54,14 +58,19 @@ class CountryFragment : Fragment(), AdapterCountry.OnItemClickListener {
             .getCountyCode()
 
         retrofit.enqueue(object : Callback<Data> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<Data>, response: Response<Data>) {
                 if (response.isSuccessful) {
-                    val responseBody = response.body()?.data?.countries!!
                     recyclerView.apply {
                         layoutManager = LinearLayoutManager(context)
-                        recyclerView.adapter = AdapterCountry(responseBody, this@CountryFragment)
+                        adapter?.notifyDataSetChanged()
+                        recyclerView.adapter =
+                            AdapterSelectExperties(
+                                response.body()?.data?.expertise!!,
+                                this@SelectExpertiseFragment
+                            )
                     }
-                    countyList = responseBody
+                    expList = response.body()?.data?.expertise!!
                 }
             }
 
@@ -71,58 +80,65 @@ class CountryFragment : Fragment(), AdapterCountry.OnItemClickListener {
 
         })
 
-        searchView = view.findViewById(R.id.Search_Country_1)
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 filterList(newText)
-
                 return true
             }
 
         })
 
+
+
+
+
         return view
+
     }
 
-    private fun filterList(query : String?) {
-
-        if(query != null){
-            val filterList = ArrayList<Countries>()
-            for (i in countyList){
-                if (i.name.lowercase(Locale.ROOT).contains(query.lowercase(Locale.ROOT))){
+    private fun filterList(query: String?) {
+        if (query != null) {
+            val filterList = ArrayList<Expertise>()
+            for (i in expList) {
+                if (i.name.lowercase(Locale.ROOT).contains(query)) {
                     filterList.add(i)
                 }
             }
-            if (filterList.isEmpty()){
-                Toast.makeText(activity,"No data Found",Toast.LENGTH_SHORT).show()
-            }else{
-                adapter = AdapterCountry(countyList,this)
+            if (filterList.isEmpty()) {
+                Toast.makeText(activity, "No data found", Toast.LENGTH_SHORT).show()
+            } else {
+                adapter = AdapterSelectExperties(filterList, this)
                 adapter!!.setFilterList(filterList)
                 recyclerView.adapter = adapter
             }
         }
-
     }
 
-    private fun gotoPreviousScreen(userInput: String, id: Int) {
+    private fun goToPreviousScreen(userInput: String, id: Int, expList: ArrayList<String>) {
+        /* setFragmentResult(
+             "2",
+             bundleOf("experties" to userInput)
+         )*/
         setFragmentResult(
-            "1",
-            bundleOf("country" to userInput)
-        )
-        setFragmentResult("5",
+            "6",
             bundleOf("id" to id)
         )
+        setFragmentResult(
+            "9",
+            bundleOf("expList" to expList)
+        )
+
     }
 
-    override fun onClick(position: Int, country: String, id: Int) {
-
-        gotoPreviousScreen(country, id)
+    override fun onCLick(position: Int, expertise: String, id: Int, expList: ArrayList<String>) {
+        goToPreviousScreen(expertise, id, expList)
         findNavController().navigateUp()
+
 
     }
 
