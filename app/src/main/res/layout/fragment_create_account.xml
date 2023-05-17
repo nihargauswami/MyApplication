@@ -45,20 +45,20 @@
             app:backgroundTint="#1F68AB"
             app:layout_constraintEnd_toEndOf="@+id/textView6"
             app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" >
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
 
-        <EditText
-            android:id="@+id/Full_Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:hint="Full Name"
-            android:inputType="text"
-            android:textColor="#1F68AB"
-            android:textColorHint="#1F68AB"
-            app:backgroundTint="#1F68AB"/>
+            <EditText
+                android:id="@+id/Full_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:hint="Full Name"
+                android:inputType="text"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                app:backgroundTint="#1F68AB" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,10 +112,10 @@
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
-            app:passwordToggleEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/password"
             app:layout_constraintStart_toStartOf="@+id/password"
-            app:layout_constraintTop_toBottomOf="@+id/password">
+            app:layout_constraintTop_toBottomOf="@+id/password"
+            app:passwordToggleEnabled="true">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/Confirm_Password"
@@ -131,29 +131,38 @@
                 app:backgroundTint="#1F68AB" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/Mobile_Number_Create"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/mobile_Number_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:ems="10"
-            android:hint="Mobile Number"
-            android:inputType="number"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
             app:layout_constraintEnd_toEndOf="@+id/confirm_password_layout"
             app:layout_constraintStart_toEndOf="@+id/Number"
-            app:layout_constraintTop_toBottomOf="@+id/confirm_password_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/confirm_password_layout">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/Mobile_Number_Create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:ems="10"
+                android:hint="Mobile Number"
+                android:inputType="number"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                app:backgroundTint="#1F68AB" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/Number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:editable="false"
             android:focusable="false"
             android:hint="+91"
@@ -163,85 +172,121 @@
             app:layout_constraintStart_toStartOf="@+id/confirm_password_layout"
             app:layout_constraintTop_toBottomOf="@+id/confirm_password_layout" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/Company_Name"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Company_Name_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:hint="Company Name"
-            android:inputType="text"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
-            app:layout_constraintEnd_toEndOf="@+id/Mobile_Number_Create"
-            app:layout_constraintStart_toStartOf="@+id/Mobile_Number_Create"
-            app:layout_constraintTop_toBottomOf="@+id/Mobile_Number_Create" />
+            app:layout_constraintEnd_toEndOf="@+id/mobile_Number_layout"
+            app:layout_constraintStart_toStartOf="@+id/mobile_Number_layout"
+            app:layout_constraintTop_toBottomOf="@+id/mobile_Number_layout">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/Company_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:hint="Company Name"
+                android:inputType="text"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                app:backgroundTint="#1F68AB" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/Current_Desg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
             android:hint="Current Designation"
             android:inputType="text"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
-            app:layout_constraintEnd_toEndOf="@+id/Company_Name"
-            app:layout_constraintStart_toStartOf="@+id/Company_Name"
-            app:layout_constraintTop_toBottomOf="@+id/Company_Name" />
+            app:layout_constraintEnd_toEndOf="@+id/Company_Name_layout"
+            app:layout_constraintStart_toStartOf="@+id/Company_Name_layout"
+            app:layout_constraintTop_toBottomOf="@+id/Company_Name_layout" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/Postal_Address"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Postal_Address_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:hint="Postal Address"
-            android:inputType="text"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
             app:layout_constraintEnd_toEndOf="@+id/Current_Desg"
             app:layout_constraintStart_toStartOf="@+id/Current_Desg"
-            app:layout_constraintTop_toBottomOf="@+id/Current_Desg" />
+            app:layout_constraintTop_toBottomOf="@+id/Current_Desg">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/City"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/Postal_Address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:hint="Postal Address"
+                android:inputType="text"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                app:backgroundTint="#1F68AB" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/City_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:hint="City"
-            android:inputType="text"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
-            app:layout_constraintEnd_toEndOf="@+id/Postal_Address"
-            app:layout_constraintStart_toStartOf="@+id/Postal_Address"
-            app:layout_constraintTop_toBottomOf="@+id/Postal_Address" />
+            app:layout_constraintEnd_toEndOf="@+id/Postal_Address_layout"
+            app:layout_constraintStart_toStartOf="@+id/Postal_Address_layout"
+            app:layout_constraintTop_toBottomOf="@+id/Postal_Address_layout">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/Pin_Code"
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/City"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:hint="City"
+                android:inputType="text"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                app:backgroundTint="#1F68AB" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Pin_Code_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="40dp"
-            android:hint="Pin Code"
-            android:inputType="number"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
-            app:layout_constraintEnd_toEndOf="@+id/City"
-            app:layout_constraintStart_toStartOf="@+id/City"
-            app:layout_constraintTop_toBottomOf="@+id/City" />
+            app:layout_constraintEnd_toEndOf="@+id/City_layout"
+            app:layout_constraintStart_toStartOf="@+id/City_layout"
+            app:layout_constraintTop_toBottomOf="@+id/City_layout">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/Pin_Code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:hint="Pin Code"
+                android:inputType="number"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                app:backgroundTint="#1F68AB" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/Select_Country_Create_Account"
@@ -256,9 +301,9 @@
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
             app:backgroundTint="#1F68AB"
-            app:layout_constraintEnd_toEndOf="@+id/Pin_Code"
-            app:layout_constraintStart_toStartOf="@+id/Pin_Code"
-            app:layout_constraintTop_toBottomOf="@+id/Pin_Code" />
+            app:layout_constraintEnd_toEndOf="@+id/Pin_Code_layout"
+            app:layout_constraintStart_toStartOf="@+id/Pin_Code_layout"
+            app:layout_constraintTop_toBottomOf="@+id/Pin_Code_layout" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/Select_Industry"
