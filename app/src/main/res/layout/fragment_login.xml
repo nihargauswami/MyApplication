@@ -49,49 +49,67 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#1F68AB"
             android:editable="false"
             android:focusable="false"
             android:text="+91"
             android:textColor="#1F68AB"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/Mobile_Number"
+            app:layout_constraintBottom_toBottomOf="@+id/Mobile_Number_Layout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/Mobile_Number" />
+            app:layout_constraintTop_toTopOf="@+id/Mobile_Number_Layout" />
 
-        <EditText
-            android:id="@+id/Mobile_Number"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Mobile_Number_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="90dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="40dp"
-            android:backgroundTint="#1F68AB"
-            android:hint="Mobile Number"
-            android:inputType="number"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
-            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Country_Code"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
 
-        <EditText
-            android:id="@+id/Password"
+            <EditText
+                android:id="@+id/Mobile_Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="#1F68AB"
+                android:hint="Mobile Number"
+                android:inputType="number"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/Password_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="40dp"
-            android:backgroundTint="#1F68AB"
-            android:hint="Password"
-            android:inputType="textPassword"
             android:textColor="#1F68AB"
             android:textColorHint="#1F68AB"
-            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Mobile_Number" />
+            app:layout_constraintTop_toBottomOf="@+id/Mobile_Number_Layout"
+            app:passwordToggleEnabled="true">
+
+            <EditText
+                android:id="@+id/Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="40dp"
+                android:backgroundTint="#1F68AB"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="#1F68AB"
+                android:textColorHint="#1F68AB"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textView7"
@@ -101,9 +119,9 @@
             android:text="By Continuing.I agree to the Terms of Use and \n Privacy Policy "
             android:textAlignment="center"
             android:textColor="#1F68AB"
-            app:layout_constraintEnd_toEndOf="@+id/Password"
-            app:layout_constraintStart_toStartOf="@+id/Password"
-            app:layout_constraintTop_toBottomOf="@+id/Password" />
+            app:layout_constraintEnd_toEndOf="@+id/Password_Layout"
+            app:layout_constraintStart_toStartOf="@+id/Password_Layout"
+            app:layout_constraintTop_toBottomOf="@+id/Password_Layout" />
 
         <Button
             android:id="@+id/Continue"
@@ -112,8 +130,8 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="40dp"
-            android:backgroundTint="#000000"
             android:background="@drawable/black_rectengel"
+            android:backgroundTint="#000000"
             android:text="Continue"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/textView7"
